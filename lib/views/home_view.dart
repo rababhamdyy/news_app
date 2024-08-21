@@ -29,19 +29,34 @@ class HomeView extends StatelessWidget {
         ),
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            HorizontalListView(),
-            SizedBox(
-              height: 35,
-            ),
-            Expanded(
-              child: VerticalListView(),
-            )
-          ],
-        ),
-      ),
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: HorizontalListView(),
+              ),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 35,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: VerticalListView(),
+              )
+            ],
+          )
+          // Column(
+          //   children: [
+          //     HorizontalListView(),
+          //     SizedBox(
+          //       height: 35,
+          //     ),
+          //     Expanded(
+          //       child: VerticalListView(),
+          //     )
+          //   ],
+          // ),
+          ),
     );
   }
 }
