@@ -7,16 +7,16 @@ class VerticalListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      scrollDirection: Axis.vertical,
-      itemCount: newsCards.length,
-      itemBuilder: (context, cardIndex) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: VerticalCardWidget(newsCard: newsCards[cardIndex]),
-      );
-    });
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        childCount: newsCards.length,
+        (context, cardIndex) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: VerticalCardWidget(newsCard: newsCards[cardIndex]),
+          );
+        },
+      ),
+    );
   }
 }
